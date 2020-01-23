@@ -1,0 +1,42 @@
+						                                 README
+Run : gcc -pthread Q3.c
+./a.out
+Input - N , M , K
+N->Number of Cabs
+M->Number of Riders
+K->Number of servers 
+Output -  Simulation
+Pipeline = First to check what the rider seeks and check the availability of the cab.
+Wait for ride to complete or cancel ride if much time is taken in waiting for the cab
+Payment to be done when anyone server is free if not wait till one server gets free.
+
+1)Struct Riders to store information about riders
+2)Struct Drivers to store information about cabs
+3)Struct payment to store information about servers
+
+paymnt
+->Assigns a free server to the rider to pay his payment with the use of mutex for each server
+So at a time there would me atmost k chances to pay
+
+Cabs
+->Check which  cab is ready to give a ride
+->Check cab type needed - if prime then get in(change wait flag to tell that the cab has been booked)  and start the timer.After completion it goes to paymnt after reinitializing the cab(for future bookings).
+If pool - 
+->Check if a pool cab already exists by a flag or not if it exists then send it to existing pool cab else send it to the new pool cab statement.
+Used a pool variable in a struct to get the number of persons in a cab
+Used Mutex to not to allow a particular cab to be taken by 2 riders simultaneously
+
+Rider
+All riders will order within 5 seconds of running the code
+->Get the details of all riders using random function 
+
+Payment 
+->If the server has been assigned a rider then this function completes the transaction
+The function breaks if each rider's transaction is either completed or is timed out
+
+In main function
+Initializing all the variables
+Used srand function to change the seed in rand
+Created M threads for Rider function to initialize ride_time,cab type and max_wait_time
+Created M threads for Cabs function to allocate cabs to each rider if available
+Created K threads for Payment function to complete the transaction

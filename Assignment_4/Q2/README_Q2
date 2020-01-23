@@ -1,0 +1,33 @@
+								README
+Pipeline = Biryani_Prep->Serving_Table->Student
+Run : gcc -pthread Q2.c
+./a.out
+Input - M  N  K
+M -> Number of Robots
+N -> Number of Serving Tables
+K -> Number of Students
+Output - Simulation
+1)Robot struct for storing information about chefs
+2)Tables struct for storing information about serving tables
+3)stdnt struct for storing information about students
+
+Declared mutex for each chef and table for accessing it in a better way
+Declared separate threads for each student, each serving table and student
+
+Biryani Preperation()
+->Declare the infoormation about robots using random function i.e prepares Biryani a
+
+Serve_table()
+->Accessing each chef
+If the chef has prepared and serving table is empty then take a vessel from him to serving table ,initialize number of slots etc
+Check if total number of vessels are finished for the chef so that he can prepare again.
+
+Waiting_For_Slot()
+All students will come within 10 sec
+Accessing each serve table
+If number of slots is > 0 and  student has'nt eaten give him one slot
+
+If total number of people added to serving table is equal to number of slots then serve each student
+If slots are remaining with no waiting person serve each student in the slot
+
+In main function initializing structs changed seed in random function and creating each thread and waiting till all student threads are finished.
